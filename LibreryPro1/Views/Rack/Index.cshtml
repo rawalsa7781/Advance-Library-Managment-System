@@ -1,0 +1,31 @@
+﻿@model IEnumerable<LibreryPro1.Models.Rack>
+
+<h2>Rack Management</h2>
+
+<a asp-action="Create"
+   class="btn btn-success mb-3">
+    Add Rack
+</a>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Rack Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RackName</td>
+                <td>@item.Location</td>
+                <td>@item.Capacity</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

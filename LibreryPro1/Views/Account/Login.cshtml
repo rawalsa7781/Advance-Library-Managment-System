@@ -1,0 +1,133 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System - Login</title>
+
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet" />
+</head>
+<body>
+
+    <div class="login-container">
+
+        <div class="login-sidebar">
+
+            <div class="sidebar-content">
+
+                <i class="fa-solid fa-book-open logo-icon"></i>
+
+                <h1>LibraryPro</h1>
+
+                <p>Digital Library Management System</p>
+
+                <span class="sidebar-tagline">
+                    "Knowledge is a treasure, but practice is the key to it."
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="login-form-section">
+
+            <div class="form-wrapper">
+
+                <h2>Welcome Back</h2>
+
+                <p class="subtitle">
+                    Please enter your credentials to access the library
+                </p>
+
+                <form asp-controller="Account"
+                      asp-action="Login"
+                      method="post">
+
+                    <div class="input-group">
+
+                        <label>Username</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input type="text"
+                                   name="username"
+                                   placeholder="Enter Username"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Password</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input type="password"
+                                   name="password"
+                                   placeholder="Enter Password"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+
+                        <label class="remember-me">
+
+                            <input type="checkbox">
+
+                            Remember Me
+
+                        </label>
+
+                        <a asp-controller="Account" asp-action="ForgotPassword">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+                    <button type="submit" class="login-btn">
+
+                        Login
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+                <div class="form-footer">
+
+                    <p>
+                        Library Management System
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+

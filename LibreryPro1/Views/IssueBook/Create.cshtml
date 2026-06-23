@@ -1,0 +1,50 @@
+﻿@model LibreryPro1.Models.IssueBook
+
+<h2>Issue Book</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label>Student</label>
+
+        <select asp-for="StudentId" class="form-control">
+
+            @foreach (var student in ViewBag.Students)
+            {
+                <option value="@student.Id">
+                    @student.Name
+                </option>
+            }
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Book</label>
+
+        <select asp-for="BookId" class="form-control">
+
+            @foreach (var book in ViewBag.Books)
+            {
+                <option value="@book.Id">
+                    @book.BookName
+                </option>
+            }
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Return Date</label>
+
+        <input asp-for="ReturnDate"
+               type="date"
+               class="form-control" />
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Issue Book
+    </button>
+
+</form>

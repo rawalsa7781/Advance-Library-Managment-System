@@ -1,0 +1,175 @@
+﻿@model IEnumerable<LibreryPro1.Models.IssueBook>
+<div class="dashboard-container">
+
+    <div class="topbar">
+        <div class="topbar-left">
+            <h1>Library Dashboard</h1>
+            <p>Manage books, students, and library activities with ease</p>
+        </div>
+
+        <div class="admin-profile">
+            <div class="avatar">A</div>
+
+            <div class="profile-info">
+                <span class="welcome-text">Welcome back</span>
+                <span class="admin-name">Admin</span>
+            </div>
+
+            <a asp-controller="Account"
+               asp-action="Logout"
+               class="logout-btn">
+                Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon-wrapper b-books">
+                <span class="card-icon">📚</span>
+            </div>
+            <div class="card-content">
+                <h2>@ViewBag.TotalBooks</h2>
+                <p>Total Books</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon-wrapper b-students">
+                <span class="card-icon">👨‍🎓</span>
+            </div>
+            <div class="card-content">
+                <h2>@ViewBag.TotalStudents</h2>
+                <p>Total Students</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon-wrapper b-issued">
+                <span class="card-icon">📖</span>
+            </div>
+            <div class="card-content">
+                <h2>@ViewBag.IssuedBooks</h2>
+                <p>Issued Books</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon-wrapper b-returned">
+                <span class="card-icon">✅</span>
+            </div>
+            <div class="card-content">
+                <h2>4</h2>
+                <p>Returned Books</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="quick-actions">
+
+        <h3>Quick Actions</h3>
+
+        <div class="quick-grid">
+
+            <a href="/Book/Create" class="quick-btn">
+                <span>📚</span> Add Book
+            </a>
+
+            <a href="/Student/Create" class="quick-btn">
+                <span>👨‍🎓</span> Add Student
+            </a>
+
+            <a href="/Book/Index" class="quick-btn">
+                <span>📖</span> View Books
+            </a>
+
+            <a href="/Student/Index" class="quick-btn">
+                <span>👥</span> View Students
+            </a>
+
+            <a asp-controller="IssueBook"
+               asp-action="Create"
+               class="quick-btn accent-btn">
+                <span>📖</span> Issue Book
+            </a>
+
+            <a asp-controller="IssueBook"
+               asp-action="Index"
+               class="quick-btn accent-btn">
+                <span>🔄</span> Return Book
+            </a>
+
+            <a asp-controller="Rack"
+               asp-action="Index"
+               class="quick-btn outline-btn">
+                <span>🗄️</span> Rack Management
+            </a>
+
+            <a asp-controller="Report"
+               asp-action="Index"
+               class="quick-btn outline-btn">
+                <span>📊</span> Reports
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-table">
+
+        <div class="table-header">
+            <h3>Recent Activities</h3>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Book Name</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@(item.Student != null ? item.Student.Name : "N/A")</td>
+
+                            <td>@(item.Book != null ? item.Book.BookName : "N/A")</td>
+
+                            <td>
+                                @if (item.IsReturned)
+                                {
+                                    <span class="badge bg-success">
+                                        Returned
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning">
+                                        Issued
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                @item.IssueDate.ToShortDateString()
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,21 @@
+﻿@model LibraryPro1.Models.Book
+
+<h2>Delete Book</h2>
+
+<h4>Are you sure?</h4>
+
+<p>@Model.BookName</p>
+
+<form asp-action="DeleteConfirmed">
+
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">
+        Delete
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>

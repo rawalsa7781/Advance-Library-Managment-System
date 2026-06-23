@@ -1,0 +1,23 @@
+﻿@model LibraryPro1.Models.Book
+
+<h2>Edit Book</h2>
+
+<form asp-action="Edit">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label>Book Name</label>
+        <input asp-for="BookName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Author</label>
+        <input asp-for="Author" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Update
+    </button>
+
+</form>

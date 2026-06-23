@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LibreryPro1.Models.IssueBook>
+
+<h2>Issued Books</h2>
+
+<a asp-action="Create"
+   class="btn btn-success mb-3">
+    Issue New Book
+</a>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Book ID</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StudentId</td>
+                <td>@item.BookId</td>
+                <td>@item.IssueDate.ToShortDateString()</td>
+                <td>
+                    @(item.ReturnDate.HasValue
+                                    ? item.ReturnDate.Value.ToShortDateString()
+                                    : "Not Returned")
+            </td>
+            <td>
+                @(item.IsReturned ? "Returned" : "Issued")
+            </td>
+                <td>
+                    @if (!item.IsReturned)
+                    {
+                        <a asp-action="ReturnBook"
+                           asp-route-id="@item.Id"
+                           class="btn btn-success">
+                            Return
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">
+                            Returned
+                        </span>
+                    }
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

@@ -1,0 +1,45 @@
+﻿<h1 class="mb-4">📚 Book List</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">
+    Add New Book
+</a>
+
+<table class="table table-bordered table-hover table-striped shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th width="200">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.BookName</td>
+                <td>@item.Author</td>
+                <td>@item.Category</td>
+                <td>@item.Quantity</td>
+
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@item.Id"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.Id"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
